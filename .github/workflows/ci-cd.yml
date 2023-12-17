@@ -38,6 +38,11 @@ jobs:
         cmake -S . -B build/YesOrYes
         cmake --build build/YesOrYes
 
+    - name: Configure and build YesOrYes
+      run: |
+        cmake -S . -B build/hello
+        cmake --build build/hello
+
   code-quality:
     runs-on: ubuntu-latest
 
@@ -60,6 +65,9 @@ jobs:
     
     - name: Run Code Quality Analysis for YesOrYes
       run: cppcheck YesOrYes.cpp
+
+    - name: Run Code Quality Analysis for YesOrYes
+      run: cppcheck hello.cpp
 
   artifact-repository:
     runs-on: ubuntu-latest
