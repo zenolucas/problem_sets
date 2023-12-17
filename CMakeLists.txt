@@ -8,9 +8,6 @@ set(CMAKE_TRY_COMPILE_CONFIGURATION "-D_ADI_COMPILER;__VERSIONNUM__")
 
 set(SOURCES
     BlackSquare.cpp
-    Divisions.cpp
-    Lucky.cpp
-    YesOrYes.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
