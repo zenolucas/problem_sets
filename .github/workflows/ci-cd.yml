@@ -1,0 +1,55 @@
+name: CI/CD C++ Project
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install CMake
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake
+
+    - name: Configure and build
+      run: |
+        cmake -S . -B build
+        cmake --build build
+
+  code-quality:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Code Quality tools (e.g., Clang, CPPCheck)
+      run: |
+        sudo apt-get install -y clang cppcheck
+
+    - name: Run Code Quality Analysis
+      run: |
+        cppcheck BlackSquare.cpp
+        cppcheck Divisions.cpp
+        cppcheck Lucky.cpp
+        cppcheck YesOrYes.cpp
+
+  artifact-repository:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: project-artifacts
+        path: problem-sets
