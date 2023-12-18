@@ -22,6 +22,10 @@ int main()
         {
             cout << "YES" << endl;
         }
+        if (line == "yes")
+        {
+            cout << "YES" << endl;
+        }
         else
         {
             cout << "NO" << endl;
